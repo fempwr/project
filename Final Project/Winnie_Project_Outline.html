@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+      <meta charset="utf-8">
+  <title>Places Searchbox</title>
+  <style>
+
+
+  .jumbotron{
+    background-color:white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top:0px;
+  }
+
+  body {
+    font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+    background: white;
+    color: black;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+  }
+  h2 {
+    color:pink;
+    text-align:center;
+    font-size: 350%;
+    margin-left:100px;
+    margin-right:1px;
+    margin-top:130px;
+  }
+  h3{
+    color:pink;
+    text-align:center;
+    font-family: papyrus;
+    font-size: 250%;
+    margin-right:1px;
+    margin-left:100px;
+  }
+
+  p{
+    text-align:center;
+    font-family: papyrus;
+    font-size: 90%;
+
+  }
+
+  .menu {
+    position: absolute;
+    top: 300px;
+    width: 100%;
+    z-index: 5;
+  }
+
+  #navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: pink;
+      text-align:center;
+  }
+  .fixed {
+    position: fixed;
+    top: 0;
+  }
+
+  .nav {
+      display:inline-block;
+      float: none;
+      text-align: center;
+  }
+
+  .nav a {
+      display:inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  .nav a:hover:not(.active) {
+      background-color: white;
+  }
+
+  .active {
+      background-color: white;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: pink
+  }
+
+  #map {
+       height: 400px;
+       width: 700px;
+       margin-left: auto;
+       margin-right: auto;
+       top: 100px;
+       margin-top:100px;
+       }
+
+  li {
+      display:inline-block;
+      float: none;
+      text-align: center;
+    }
+
+  li a
+    {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+  li a:hover:not(.active)
+   {
+      background-color:white
+    }
+
+  .active
+   {
+      background-color:white
+    }
+
+  .container
+  {
+    top: 240px;
+    position: absolute;
+  }
+
+  #description
+   {
+         font-family: Roboto;
+         font-size: 15px;
+         font-weight: 300;
+    }
+
+       #infowindow-content .title
+        {
+         font-weight: bold;
+        }
+
+       #infowindow-content
+        {
+         display: none;
+        }
+
+       #map #infowindow-content
+        {
+         display: inline;
+        }
+
+       .pac-card {
+         margin: 10px 10px 0 0;
+         border-radius: 2px 0 0 2px;
+         box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         outline: none;
+         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+         background-color: #fff;
+         font-family: Roboto;
+       }
+
+       #pac-container {
+         padding-bottom: 12px;
+         margin-right: 12px;
+       }
+
+       .pac-controls {
+         display: inline-block;
+         padding: 5px 11px;
+       }
+
+       .pac-controls label {
+         font-family: Roboto;
+         font-size: 13px;
+         font-weight: 300;
+       }
+
+       #pac-input {
+         background-color: #fff;
+         font-family: Roboto;
+         font-size: 15px;
+         font-weight: 300;
+         margin-left: 12px;
+         padding: 0 11px 0 13px;
+         text-overflow: ellipsis;
+         width: 400px;
+       }
+
+       #pac-input:focus {
+         border-color: #4d90fe;
+       }
+
+       #title {
+         color: #fff;
+         background-color: #4d90fe;
+         font-size: 25px;
+         font-weight: 500;
+         padding: 6px 12px;
+       }
+       #target {
+         width: 345px;
+       }
+
+</style>
+  </head>
+
+<body>
+  <div class="menu">
+    <ul id="navbar">
+      <li class="nav"><a href="finalproject.html">Home</a></li>
+      <li class="nav"><a href="stories.html">Stories</a></li>
+      <li class="nav"><a href="helpfultips.html">Helpful Tips</a></li>
+      <li class="nav"><a href="quotes.html">Quotes</a></li>
+      <li class="nav"><a href="services.html">Services</a></li>
+      <li class="nav"><a href="aboutus.html">About Us</a></li>
+    </ul>
+  </div>
+
+  <div class="jumbotron">
+    <center><img src="reallogo.png" alt="logo" style="width:340px;height:340px;"></center>
+    <p></p>
+  </div>
+  <div class="container">
+    <h2><center><font color="pink"><br>Services</font></center></h2>
+  </div>
+
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map"></div>
+
+
+<script>
+
+var num = 300; //number of pixels before modifying styles
+
+$(window).bind('scroll', function () {
+    if ($(window).scrollTop() > num) {
+        $('.menu').addClass('fixed');
+    } else {
+        $('.menu').removeClass('fixed');
+    }
+});
+
+function initAutocomplete() {
+       var map = new google.maps.Map(document.getElementById('map'), {
+         center: {lat:37.5173734, lng:-122.21089},
+         zoom: 13,
+         mapTypeId: 'roadmap'
+       });
+       var input = document.getElementById('pac-input');
+              var searchBox = new google.maps.places.SearchBox(input);
+              map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+              map.addListener('bounds_changed', function() {
+                        searchBox.setBounds(map.getBounds());
+                      });
+      var markers = [];
+      searchBox.addListener('places_changed', function() {
+         var places = searchBox.getPlaces();
+
+         if (places.length == 0) {
+           return;
+         }
+         markers.forEach(function(marker) {
+                    marker.setMap(null);
+                  });
+                  markers = [];
+                  var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+              if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+              }
+              var icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+              };
+              markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+            if (place.geometry.viewport) {
+                         // Only geocodes have viewport.
+                         bounds.union(place.geometry.viewport);
+                       } else {
+                         bounds.extend(place.geometry.location);
+                       }
+                     });
+                     map.fitBounds(bounds);
+                   });
+                 }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG3KFPXUk-UkHQRCVwirYI2aQ6-vpJNpg&libraries=places&callback=initAutocomplete" async defer></script>
+
+
+</body>
+
+</html>
