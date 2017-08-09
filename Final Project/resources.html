@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+
+
+.jumbotron{
+  background-color:white;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top:0px;
+}
+
+body {
+  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+  background: white;
+  color: black;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}
+h2 {
+  color:pink;
+  text-align:center;
+  font-size: 350%;
+}
+h3{
+  color:pink;
+  text-align:center;
+  font-family: papyrus;
+  font-size: 250%;
+}
+
+p{
+  text-align:center;
+  font-family: papyrus;
+  font-size: 110%;
+
+}
+
+.menu {
+  position: absolute;
+  top: 300px;
+  width: 100%;
+  z-index: 5;
+}
+
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: pink;
+    text-align:center;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.nav {
+    display:inline-block;
+    float: none;
+    text-align: center;
+}
+
+.nav a {
+    display:inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav a:hover:not(.active) {
+    background-color: white;
+}
+
+.active {
+    background-color: white;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: pink
+}
+</style>
+  </head>
+  <body>
+    <div class="menu">
+      <ul id="navbar">
+        <li class="nav"><a href="finalproject.html">Home</a></li>
+        <li class="nav"><a href="stories.html">Stories</a></li>
+        <li class="nav"><a href="lifehacks.html">Life Hacks</a></li>
+        <li class="nav"><a href="quotes.html">Quotes</a></li>
+        <li class="nav"><a href="services.html">Services</a></li>
+          <li class="nav"><a href="knowyourrights.html">Know Your Rights</a></li>
+        <li class="nav"><a href="aboutus.html">About Us</a></li>
+        <li class="nav active"><a href="resources.html">Resources</a></li>
+      </ul>
+    </div>
+
+    <div class="jumbotron">
+      <center><img src="reallogo.png" alt="logo" style="width:340px;height:340px;"></center>
+      <p></p>
+    </div>
+<div class="container">
+  <h2><center><font color="pink"><br>Resources</font></center></h2>
+  <p><br>The FemPwr Team couldn't have created this website without tremendous help from other people and websites.
+    First of all, we'd like to thank our wonderful teacher, Pamela Price, and teacher's assistants,
+    Macie Cooper and Stephanie Mark from the Girls Who Code EA program for helping us code the website. We would also
+    like to thank the following websites for helping us find quotes, facts, and people to feature on our site:
+    <br>
+    <br>
+    <a href="https://oag.ca.gov/publications/womansrights">California Department of Justice</a>
+    <br><br>
+    <a href="http://www.nwhp.org/resources/womens-rights-movement/history-of-the-womens-rights-movement/">National Women's History Project</a>
+    <br><br>
+    <a href="http://www.digitalhistory.uh.edu/timelines/timelinetopics.cfm?tltopicid=3">Digital History</a>
+    <br><br>
+    <a href="https://www.ted.com/">Ted Talks</a>
+    <br><br>
+    <a href="http://www.harpersbazaar.com/culture/features/a4056/empowering-female-quotes/">Harper's Bazaar<br><br></a>
+This website was coded as the final project of the 7-week Girls Who Code Summer Immersion Program. We were four of 20 girls based at the Electronic Arts location
+in Redwood City. Girls Who Code is a fantastic program for rising junior and senior girls who are interested in dabbling in coding, technology, and working at
+a tech company. Click <a href="https://girlswhocode.com/">here</a> to learn more about the program!</p>
+
+</div>
+
+
+
+<script>
+var num = 300; //number of pixels before modifying styles
+
+$(window).bind('scroll', function () {
+    if ($(window).scrollTop() > num) {
+        $('.menu').addClass('fixed');
+    } else {
+        $('.menu').removeClass('fixed');
+    }
+});
+</script>
+</body>
+</html>
